@@ -131,6 +131,7 @@ function RootComponent() {
               <main className="flex-1">
                 <Outlet />
               </main>
+              <Toaster richColors position="top-right" />
             </div>
           </div>
         </SidebarProvider>
