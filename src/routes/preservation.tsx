@@ -39,6 +39,7 @@ const traditions = [
 function Page() {
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
+      <div className="mb-3"><CommunityScopeBadge /></div>
       <PageHeader eyebrow="Module 01" title="Cultural Preservation Metrics" description="A real-time risk model for languages, ceremonies, sites and the artisans who carry them forward." />
       <div className="grid gap-4 md:grid-cols-4">
         <StatCard label="Languages at risk" value="237" delta="42 critical · 88 endangered" icon={AlertTriangle} tone="warn" />
