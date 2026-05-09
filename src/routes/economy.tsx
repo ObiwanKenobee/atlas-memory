@@ -38,6 +38,7 @@ const artisans = [
 function Page() {
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
+      <div className="mb-3"><CommunityScopeBadge /></div>
       <PageHeader eyebrow="Module 06" title="Cultural Economy Layer" description="Culture must remain economically alive. Capital flows, marketplaces and creator cooperatives — measured for regeneration impact." />
 
       <div className="grid gap-4 md:grid-cols-4">
