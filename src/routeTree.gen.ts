@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SacredEcosystemsRouteImport } from './routes/sacred-ecosystems'
 import { Route as PreservationRouteImport } from './routes/preservation'
 import { Route as OralHistoryRouteImport } from './routes/oral-history'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SacredEcosystemsRoute = SacredEcosystemsRouteImport.update({
+  id: '/sacred-ecosystems',
+  path: '/sacred-ecosystems',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PreservationRoute = PreservationRouteImport.update({
   id: '/preservation',
   path: '/preservation',
@@ -33,34 +39,50 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/oral-history': typeof OralHistoryRoute
   '/preservation': typeof PreservationRoute
+  '/sacred-ecosystems': typeof SacredEcosystemsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/oral-history': typeof OralHistoryRoute
   '/preservation': typeof PreservationRoute
+  '/sacred-ecosystems': typeof SacredEcosystemsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/oral-history': typeof OralHistoryRoute
   '/preservation': typeof PreservationRoute
+  '/sacred-ecosystems': typeof SacredEcosystemsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/oral-history' | '/preservation'
+  fullPaths: '/' | '/oral-history' | '/preservation' | '/sacred-ecosystems'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/oral-history' | '/preservation'
-  id: '__root__' | '/' | '/oral-history' | '/preservation'
+  to: '/' | '/oral-history' | '/preservation' | '/sacred-ecosystems'
+  id:
+    | '__root__'
+    | '/'
+    | '/oral-history'
+    | '/preservation'
+    | '/sacred-ecosystems'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   OralHistoryRoute: typeof OralHistoryRoute
   PreservationRoute: typeof PreservationRoute
+  SacredEcosystemsRoute: typeof SacredEcosystemsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sacred-ecosystems': {
+      id: '/sacred-ecosystems'
+      path: '/sacred-ecosystems'
+      fullPath: '/sacred-ecosystems'
+      preLoaderRoute: typeof SacredEcosystemsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/preservation': {
       id: '/preservation'
       path: '/preservation'
@@ -89,6 +111,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   OralHistoryRoute: OralHistoryRoute,
   PreservationRoute: PreservationRoute,
+  SacredEcosystemsRoute: SacredEcosystemsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
