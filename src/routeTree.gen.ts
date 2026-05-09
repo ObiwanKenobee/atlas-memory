@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SovereigntyRouteImport } from './routes/sovereignty'
 import { Route as SacredEcosystemsRouteImport } from './routes/sacred-ecosystems'
 import { Route as RestorationRouteImport } from './routes/restoration'
 import { Route as PreservationRouteImport } from './routes/preservation'
@@ -17,6 +18,11 @@ import { Route as IndigenousKnowledgeRouteImport } from './routes/indigenous-kno
 import { Route as EconomyRouteImport } from './routes/economy'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SovereigntyRoute = SovereigntyRouteImport.update({
+  id: '/sovereignty',
+  path: '/sovereignty',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SacredEcosystemsRoute = SacredEcosystemsRouteImport.update({
   id: '/sacred-ecosystems',
   path: '/sacred-ecosystems',
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/preservation': typeof PreservationRoute
   '/restoration': typeof RestorationRoute
   '/sacred-ecosystems': typeof SacredEcosystemsRoute
+  '/sovereignty': typeof SovereigntyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/preservation': typeof PreservationRoute
   '/restoration': typeof RestorationRoute
   '/sacred-ecosystems': typeof SacredEcosystemsRoute
+  '/sovereignty': typeof SovereigntyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/preservation': typeof PreservationRoute
   '/restoration': typeof RestorationRoute
   '/sacred-ecosystems': typeof SacredEcosystemsRoute
+  '/sovereignty': typeof SovereigntyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/preservation'
     | '/restoration'
     | '/sacred-ecosystems'
+    | '/sovereignty'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/preservation'
     | '/restoration'
     | '/sacred-ecosystems'
+    | '/sovereignty'
   id:
     | '__root__'
     | '/'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/preservation'
     | '/restoration'
     | '/sacred-ecosystems'
+    | '/sovereignty'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,10 +131,18 @@ export interface RootRouteChildren {
   PreservationRoute: typeof PreservationRoute
   RestorationRoute: typeof RestorationRoute
   SacredEcosystemsRoute: typeof SacredEcosystemsRoute
+  SovereigntyRoute: typeof SovereigntyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sovereignty': {
+      id: '/sovereignty'
+      path: '/sovereignty'
+      fullPath: '/sovereignty'
+      preLoaderRoute: typeof SovereigntyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sacred-ecosystems': {
       id: '/sacred-ecosystems'
       path: '/sacred-ecosystems'
@@ -183,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   PreservationRoute: PreservationRoute,
   RestorationRoute: RestorationRoute,
   SacredEcosystemsRoute: SacredEcosystemsRoute,
+  SovereigntyRoute: SovereigntyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
