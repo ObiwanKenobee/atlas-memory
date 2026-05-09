@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SacredEcosystemsRouteImport } from './routes/sacred-ecosystems'
 import { Route as PreservationRouteImport } from './routes/preservation'
 import { Route as OralHistoryRouteImport } from './routes/oral-history'
+import { Route as IndigenousKnowledgeRouteImport } from './routes/indigenous-knowledge'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SacredEcosystemsRoute = SacredEcosystemsRouteImport.update({
@@ -29,6 +30,11 @@ const OralHistoryRoute = OralHistoryRouteImport.update({
   path: '/oral-history',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IndigenousKnowledgeRoute = IndigenousKnowledgeRouteImport.update({
+  id: '/indigenous-knowledge',
+  path: '/indigenous-knowledge',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +43,14 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/indigenous-knowledge': typeof IndigenousKnowledgeRoute
   '/oral-history': typeof OralHistoryRoute
   '/preservation': typeof PreservationRoute
   '/sacred-ecosystems': typeof SacredEcosystemsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/indigenous-knowledge': typeof IndigenousKnowledgeRoute
   '/oral-history': typeof OralHistoryRoute
   '/preservation': typeof PreservationRoute
   '/sacred-ecosystems': typeof SacredEcosystemsRoute
@@ -50,18 +58,30 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/indigenous-knowledge': typeof IndigenousKnowledgeRoute
   '/oral-history': typeof OralHistoryRoute
   '/preservation': typeof PreservationRoute
   '/sacred-ecosystems': typeof SacredEcosystemsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/oral-history' | '/preservation' | '/sacred-ecosystems'
+  fullPaths:
+    | '/'
+    | '/indigenous-knowledge'
+    | '/oral-history'
+    | '/preservation'
+    | '/sacred-ecosystems'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/oral-history' | '/preservation' | '/sacred-ecosystems'
+  to:
+    | '/'
+    | '/indigenous-knowledge'
+    | '/oral-history'
+    | '/preservation'
+    | '/sacred-ecosystems'
   id:
     | '__root__'
     | '/'
+    | '/indigenous-knowledge'
     | '/oral-history'
     | '/preservation'
     | '/sacred-ecosystems'
@@ -69,6 +89,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  IndigenousKnowledgeRoute: typeof IndigenousKnowledgeRoute
   OralHistoryRoute: typeof OralHistoryRoute
   PreservationRoute: typeof PreservationRoute
   SacredEcosystemsRoute: typeof SacredEcosystemsRoute
@@ -97,6 +118,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OralHistoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/indigenous-knowledge': {
+      id: '/indigenous-knowledge'
+      path: '/indigenous-knowledge'
+      fullPath: '/indigenous-knowledge'
+      preLoaderRoute: typeof IndigenousKnowledgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -109,6 +137,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  IndigenousKnowledgeRoute: IndigenousKnowledgeRoute,
   OralHistoryRoute: OralHistoryRoute,
   PreservationRoute: PreservationRoute,
   SacredEcosystemsRoute: SacredEcosystemsRoute,
