@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, StatCard, SectionCard } from "@/components/sanctum/Primitives";
+import { CommunityScopeBadge } from "@/components/CommunityContext";
 import { Hammer, Wallet, Users, CheckCircle2 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
@@ -20,6 +21,7 @@ const projects = [
 function Page() {
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
+      <div className="mb-3"><CommunityScopeBadge /></div>
       <PageHeader eyebrow="Module 05" title="Heritage Restoration Tracker" description="Funding, milestones, volunteer coordination — and the ecosystems each restoration is tied to." />
 
       <div className="grid gap-4 md:grid-cols-4">

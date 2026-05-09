@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, StatCard, SectionCard } from "@/components/sanctum/Primitives";
+import { CommunityScopeBadge } from "@/components/CommunityContext";
 import { Sprout, Cloud, Leaf, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
@@ -36,6 +37,7 @@ const plants = [
 function Page() {
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
+      <div className="mb-3"><CommunityScopeBadge /></div>
       <PageHeader eyebrow="Module 04" title="Indigenous Ecological Knowledge Engine" description="An alternative intelligence layer to industrial systems — wisdom systems triangulated with satellite data." />
 
       <div className="grid gap-4 md:grid-cols-4">

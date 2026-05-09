@@ -104,32 +104,38 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
+import { CommunityProvider, CommunitySwitcher } from "@/components/CommunityContext";
+import { Toaster } from "@/components/ui/sonner";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SidebarProvider>
-        <div className="flex min-h-screen w-full">
-          <AppSidebar />
-          <div className="flex min-h-screen flex-1 flex-col">
-            <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-border/50 bg-background/70 px-4 backdrop-blur-md">
-              <SidebarTrigger />
-              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]" />
-                Civilization signal · live
-              </div>
-              <div className="ml-auto text-xs text-muted-foreground">
-                Region: <span className="text-foreground">Kenya · East Africa</span>
-              </div>
-            </header>
-            <main className="flex-1">
-              <Outlet />
-            </main>
+      <CommunityProvider>
+        <SidebarProvider>
+          <div className="flex min-h-screen w-full">
+            <AppSidebar />
+            <div className="flex min-h-screen flex-1 flex-col">
+              <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-border/50 bg-background/70 px-4 backdrop-blur-md">
+                <SidebarTrigger />
+                <div className="hidden items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground md:flex">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]" />
+                  Civilization signal · live
+                </div>
+                <div className="ml-auto flex items-center gap-3">
+                  <span className="hidden text-xs text-muted-foreground sm:inline">Kenya · East Africa</span>
+                  <CommunitySwitcher />
+                </div>
+              </header>
+              <main className="flex-1">
+                <Outlet />
+              </main>
+              <Toaster richColors position="top-right" />
+            </div>
           </div>
-        </div>
-      </SidebarProvider>
+        </SidebarProvider>
+      </CommunityProvider>
     </QueryClientProvider>
   );
 }
