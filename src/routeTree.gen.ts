@@ -9,8 +9,56 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SovereigntyRouteImport } from './routes/sovereignty'
+import { Route as SacredEcosystemsRouteImport } from './routes/sacred-ecosystems'
+import { Route as RestorationRouteImport } from './routes/restoration'
+import { Route as PreservationRouteImport } from './routes/preservation'
+import { Route as OralHistoryRouteImport } from './routes/oral-history'
+import { Route as IndigenousKnowledgeRouteImport } from './routes/indigenous-knowledge'
+import { Route as EconomyRouteImport } from './routes/economy'
+import { Route as AgentsRouteImport } from './routes/agents'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SovereigntyRoute = SovereigntyRouteImport.update({
+  id: '/sovereignty',
+  path: '/sovereignty',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SacredEcosystemsRoute = SacredEcosystemsRouteImport.update({
+  id: '/sacred-ecosystems',
+  path: '/sacred-ecosystems',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RestorationRoute = RestorationRouteImport.update({
+  id: '/restoration',
+  path: '/restoration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PreservationRoute = PreservationRouteImport.update({
+  id: '/preservation',
+  path: '/preservation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OralHistoryRoute = OralHistoryRouteImport.update({
+  id: '/oral-history',
+  path: '/oral-history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndigenousKnowledgeRoute = IndigenousKnowledgeRouteImport.update({
+  id: '/indigenous-knowledge',
+  path: '/indigenous-knowledge',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EconomyRoute = EconomyRouteImport.update({
+  id: '/economy',
+  path: '/economy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgentsRoute = AgentsRouteImport.update({
+  id: '/agents',
+  path: '/agents',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +67,144 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agents': typeof AgentsRoute
+  '/economy': typeof EconomyRoute
+  '/indigenous-knowledge': typeof IndigenousKnowledgeRoute
+  '/oral-history': typeof OralHistoryRoute
+  '/preservation': typeof PreservationRoute
+  '/restoration': typeof RestorationRoute
+  '/sacred-ecosystems': typeof SacredEcosystemsRoute
+  '/sovereignty': typeof SovereigntyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agents': typeof AgentsRoute
+  '/economy': typeof EconomyRoute
+  '/indigenous-knowledge': typeof IndigenousKnowledgeRoute
+  '/oral-history': typeof OralHistoryRoute
+  '/preservation': typeof PreservationRoute
+  '/restoration': typeof RestorationRoute
+  '/sacred-ecosystems': typeof SacredEcosystemsRoute
+  '/sovereignty': typeof SovereigntyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agents': typeof AgentsRoute
+  '/economy': typeof EconomyRoute
+  '/indigenous-knowledge': typeof IndigenousKnowledgeRoute
+  '/oral-history': typeof OralHistoryRoute
+  '/preservation': typeof PreservationRoute
+  '/restoration': typeof RestorationRoute
+  '/sacred-ecosystems': typeof SacredEcosystemsRoute
+  '/sovereignty': typeof SovereigntyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/agents'
+    | '/economy'
+    | '/indigenous-knowledge'
+    | '/oral-history'
+    | '/preservation'
+    | '/restoration'
+    | '/sacred-ecosystems'
+    | '/sovereignty'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/agents'
+    | '/economy'
+    | '/indigenous-knowledge'
+    | '/oral-history'
+    | '/preservation'
+    | '/restoration'
+    | '/sacred-ecosystems'
+    | '/sovereignty'
+  id:
+    | '__root__'
+    | '/'
+    | '/agents'
+    | '/economy'
+    | '/indigenous-knowledge'
+    | '/oral-history'
+    | '/preservation'
+    | '/restoration'
+    | '/sacred-ecosystems'
+    | '/sovereignty'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgentsRoute: typeof AgentsRoute
+  EconomyRoute: typeof EconomyRoute
+  IndigenousKnowledgeRoute: typeof IndigenousKnowledgeRoute
+  OralHistoryRoute: typeof OralHistoryRoute
+  PreservationRoute: typeof PreservationRoute
+  RestorationRoute: typeof RestorationRoute
+  SacredEcosystemsRoute: typeof SacredEcosystemsRoute
+  SovereigntyRoute: typeof SovereigntyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sovereignty': {
+      id: '/sovereignty'
+      path: '/sovereignty'
+      fullPath: '/sovereignty'
+      preLoaderRoute: typeof SovereigntyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sacred-ecosystems': {
+      id: '/sacred-ecosystems'
+      path: '/sacred-ecosystems'
+      fullPath: '/sacred-ecosystems'
+      preLoaderRoute: typeof SacredEcosystemsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/restoration': {
+      id: '/restoration'
+      path: '/restoration'
+      fullPath: '/restoration'
+      preLoaderRoute: typeof RestorationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/preservation': {
+      id: '/preservation'
+      path: '/preservation'
+      fullPath: '/preservation'
+      preLoaderRoute: typeof PreservationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oral-history': {
+      id: '/oral-history'
+      path: '/oral-history'
+      fullPath: '/oral-history'
+      preLoaderRoute: typeof OralHistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/indigenous-knowledge': {
+      id: '/indigenous-knowledge'
+      path: '/indigenous-knowledge'
+      fullPath: '/indigenous-knowledge'
+      preLoaderRoute: typeof IndigenousKnowledgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/economy': {
+      id: '/economy'
+      path: '/economy'
+      fullPath: '/economy'
+      preLoaderRoute: typeof EconomyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agents': {
+      id: '/agents'
+      path: '/agents'
+      fullPath: '/agents'
+      preLoaderRoute: typeof AgentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +217,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgentsRoute: AgentsRoute,
+  EconomyRoute: EconomyRoute,
+  IndigenousKnowledgeRoute: IndigenousKnowledgeRoute,
+  OralHistoryRoute: OralHistoryRoute,
+  PreservationRoute: PreservationRoute,
+  RestorationRoute: RestorationRoute,
+  SacredEcosystemsRoute: SacredEcosystemsRoute,
+  SovereigntyRoute: SovereigntyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
