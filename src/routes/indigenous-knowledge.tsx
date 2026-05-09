@@ -37,6 +37,7 @@ const plants = [
 function Page() {
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
+      <div className="mb-3"><CommunityScopeBadge /></div>
       <PageHeader eyebrow="Module 04" title="Indigenous Ecological Knowledge Engine" description="An alternative intelligence layer to industrial systems — wisdom systems triangulated with satellite data." />
 
       <div className="grid gap-4 md:grid-cols-4">
