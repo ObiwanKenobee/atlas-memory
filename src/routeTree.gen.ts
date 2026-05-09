@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PreservationRouteImport } from './routes/preservation'
+import { Route as OralHistoryRouteImport } from './routes/oral-history'
 import { Route as IndexRouteImport } from './routes/index'
 
 const PreservationRoute = PreservationRouteImport.update({
   id: '/preservation',
   path: '/preservation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OralHistoryRoute = OralHistoryRouteImport.update({
+  id: '/oral-history',
+  path: '/oral-history',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/oral-history': typeof OralHistoryRoute
   '/preservation': typeof PreservationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/oral-history': typeof OralHistoryRoute
   '/preservation': typeof PreservationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/oral-history': typeof OralHistoryRoute
   '/preservation': typeof PreservationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/preservation'
+  fullPaths: '/' | '/oral-history' | '/preservation'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/preservation'
-  id: '__root__' | '/' | '/preservation'
+  to: '/' | '/oral-history' | '/preservation'
+  id: '__root__' | '/' | '/oral-history' | '/preservation'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  OralHistoryRoute: typeof OralHistoryRoute
   PreservationRoute: typeof PreservationRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/preservation'
       fullPath: '/preservation'
       preLoaderRoute: typeof PreservationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oral-history': {
+      id: '/oral-history'
+      path: '/oral-history'
+      fullPath: '/oral-history'
+      preLoaderRoute: typeof OralHistoryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  OralHistoryRoute: OralHistoryRoute,
   PreservationRoute: PreservationRoute,
 }
 export const routeTree = rootRouteImport
