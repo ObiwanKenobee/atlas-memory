@@ -16,6 +16,7 @@ import { Route as PreservationRouteImport } from './routes/preservation'
 import { Route as OralHistoryRouteImport } from './routes/oral-history'
 import { Route as IndigenousKnowledgeRouteImport } from './routes/indigenous-knowledge'
 import { Route as EconomyRouteImport } from './routes/economy'
+import { Route as AgentsRouteImport } from './routes/agents'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SovereigntyRoute = SovereigntyRouteImport.update({
@@ -53,6 +54,11 @@ const EconomyRoute = EconomyRouteImport.update({
   path: '/economy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AgentsRoute = AgentsRouteImport.update({
+  id: '/agents',
+  path: '/agents',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -61,6 +67,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agents': typeof AgentsRoute
   '/economy': typeof EconomyRoute
   '/indigenous-knowledge': typeof IndigenousKnowledgeRoute
   '/oral-history': typeof OralHistoryRoute
@@ -71,6 +78,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agents': typeof AgentsRoute
   '/economy': typeof EconomyRoute
   '/indigenous-knowledge': typeof IndigenousKnowledgeRoute
   '/oral-history': typeof OralHistoryRoute
@@ -82,6 +90,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agents': typeof AgentsRoute
   '/economy': typeof EconomyRoute
   '/indigenous-knowledge': typeof IndigenousKnowledgeRoute
   '/oral-history': typeof OralHistoryRoute
@@ -94,6 +103,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/agents'
     | '/economy'
     | '/indigenous-knowledge'
     | '/oral-history'
@@ -104,6 +114,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/agents'
     | '/economy'
     | '/indigenous-knowledge'
     | '/oral-history'
@@ -114,6 +125,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/agents'
     | '/economy'
     | '/indigenous-knowledge'
     | '/oral-history'
@@ -125,6 +137,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgentsRoute: typeof AgentsRoute
   EconomyRoute: typeof EconomyRoute
   IndigenousKnowledgeRoute: typeof IndigenousKnowledgeRoute
   OralHistoryRoute: typeof OralHistoryRoute
@@ -185,6 +198,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EconomyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/agents': {
+      id: '/agents'
+      path: '/agents'
+      fullPath: '/agents'
+      preLoaderRoute: typeof AgentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -197,6 +217,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgentsRoute: AgentsRoute,
   EconomyRoute: EconomyRoute,
   IndigenousKnowledgeRoute: IndigenousKnowledgeRoute,
   OralHistoryRoute: OralHistoryRoute,
