@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, StatCard, SectionCard } from "@/components/sanctum/Primitives";
+import { CommunityScopeBadge } from "@/components/CommunityContext";
 import { Languages, AlertTriangle, BookOpenCheck, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
