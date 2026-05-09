@@ -15,7 +15,7 @@ import { Switch } from "@/components/ui/switch";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Upload, FileAudio, FileVideo, ScrollText, Sparkles, CheckCircle2, Loader2 } from "lucide-react";
-import { toast } from "@/components/ui/sonner";
+import { toast } from "sonner";
 import { useCommunity } from "@/components/CommunityContext";
 
 type Step = { key: string; label: string; icon: typeof Sparkles };
